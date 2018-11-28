@@ -1,0 +1,24 @@
+options -multiviews
+options -indexes
+
+<IfModule mod_rewrite.c>
+   RewriteEngine on
+   # page / page-number rewrite rules.
+   RewriteRule ^$ index.php?%{QUERY_STRING}
+   RewriteRule ^(hash|string)-algorithms?$ index.php?type=$1&%{QUERY_STRING}
+   RewriteRule ^algorithm/([^/.]+)?$ algorithm.php?slug=$1&%{QUERY_STRING}
+</IfModule>
+
+<IfModule mod_security.c>
+   SecFilterEngine off
+   SecFilterScanPOST off
+</IfModule>
+
+<IfModule mod_headers.c>
+   <FilesMatch "\.(gif|jpe?g|png|ico|css|js|xml)$">
+      Header set Cache-Control "max-age=604800, public"
+   </FilesMatch>
+   <FilesMatch "\.(php|js|css|xml|gz|html)$">
+      Header append Vary: Accept-Encoding
+   </FilesMatch>
+</IfModule>
