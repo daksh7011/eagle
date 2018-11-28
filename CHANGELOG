@@ -1,2 +1,5 @@
 v 0.1 
     -initialized project
+v 0.2
+    -initialized bootstrap files
+    -added server rewrites
