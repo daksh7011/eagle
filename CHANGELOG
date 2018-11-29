@@ -7,3 +7,13 @@ v 0.3
     -added project wide config file that handles name of project and misc things
     -added magical class which will be the core of Project Eagle. this class is responsible for setting website
         protocol, url and fetch current url on the fly. more to come on same class.
+
+V 1.0
+    file: eagle.class.php
+        -added methods to prepare slugs, names, algorithms.
+        -added method to exploit available string algorithms in php core (added base64 encode and base64 decode)
+        -added method to count available hash and string methods to show it in main page hero.
+        -added method to convert algorithm names to appropriate slugs
+        -added magic method to use algorithms.
+
+    -Added working front end with custom css style based on bootstrap framework
