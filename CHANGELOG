@@ -17,3 +17,7 @@ V 1.0
         -added magic method to use algorithms.
 
     -Added working front end with custom css style based on bootstrap framework
+V 1.1
+    -Hot-fix: updated method name in eagle.class.php
+    -modified readme with relevant info
+    -modified contribution guide.
