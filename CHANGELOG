@@ -3,3 +3,7 @@ v 0.1
 v 0.2
     -initialized bootstrap files
     -added server rewrites
+v 0.3
+    -added project wide config file that handles name of project and misc things
+    -added magical class which will be the core of Project Eagle. this class is responsible for setting website
+        protocol, url and fetch current url on the fly. more to come on same class.
