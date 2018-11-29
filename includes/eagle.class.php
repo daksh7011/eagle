@@ -29,7 +29,7 @@ class eagle
         return self::website_protocol() . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     }
 
-//prepare slugs
+    //prepare slugs
     public static function algorithm_slug($string)
     {
         $slug = strtolower($string);
@@ -79,7 +79,7 @@ class eagle
         return ($hash && $string ? array_merge($hash, $string) : ($hash ? $hash : $string));
     }
 
-    //create slugs for all algorithms
+    //convert algorithm names to appropriate slugs
     public static function slug_to_algorithm($slug)
     {
         $algorithms = self::all_algorithms();
@@ -93,8 +93,8 @@ class eagle
     }
 
 
-    //the main magic happens here that needs to be developed
-    public static function use_algorithm($algorithm, $opts)
+    //the main magic happens here
+    public static function magic_method($algorithm, $opts)
     {
         //validate if string is not null
         if (!isset($opts['string']) || empty($opts['string'])) {
