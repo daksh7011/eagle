@@ -22,8 +22,8 @@ class Eagle
     {
         //$dir = dirname($_SERVER['PHP_SELF']); //doesnt work
         //$dir = dirname($_SERVER['REQUEST_URI']); //doesnt work
-        $dir = dirname($_SERVER['SCRIPT_FILENAME']);
-        return self::websiteProtocol() . '://' . $_SERVER['HTTP_HOST'] . $dir . '/';
+        //$dir = dirname($_SERVER['SCRIPT_FILENAME']); //doesnt work either
+        return self::websiteProtocol() . '://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/';
     }
 
     //get current full request path including the querystring.
