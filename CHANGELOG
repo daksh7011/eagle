@@ -21,3 +21,6 @@ V 1.1
     -Hot-fix: updated method name in eagle.class.php
     -modified readme with relevant info
     -modified contribution guide.
+V 1.2
+    -refactor the method names with camelCase and class name with PascalCase
+    -modified bugged contribution guide with correct guide
