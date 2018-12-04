@@ -8,29 +8,29 @@
  *
  */
 
-class eagle
+class Eagle
 {
 
     //get protocol whether it is secured or plain
-    public static function website_protocol()
+    public static function websiteProtocol()
     {
         return (isset($_SERVER['HTTPS']) && (!empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http');
     }
 
     //get website url from global var and concat it with protocol
-    public static function website_url()
+    public static function websiteUrl()
     {
-        return self::website_protocol() . '://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/';
+        return self::websiteProtocol() . '://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/';
     }
 
-    //get current url
-    public static function website_current()
+    //get current full request path including the querystring.
+    public static function websiteCurrent()
     {
-        return self::website_protocol() . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        return self::websiteProtocol() . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     }
 
     //prepare slugs
-    public static function algorithm_slug($string)
+    public static function algorithmSlug($string)
     {
         $slug = strtolower($string);
         $slug = preg_replace('/[^a-z0-9]+/', '-', $slug);
@@ -38,7 +38,7 @@ class eagle
     }
 
     //prepare name of algorithm
-    public static function algorithm_name($string)
+    public static function algorithmName($string)
     {
         $name = strtolower($string);
         $name = preg_replace('/[^a-z0-9\.\,\s]+/', ' ', $name);
@@ -46,7 +46,7 @@ class eagle
     }
 
     //available string algorithms in core php
-    public static function string_algorithms()
+    public static function stringAlgorithms()
     {
         $functions = array(
             "base64_encode",
@@ -58,9 +58,9 @@ class eagle
         foreach ($functions as $function) {
             if (function_exists($function)) {
                 $algorithm = array();
-                $algorithm['slug'] = self::algorithm_slug($function);
-                $algorithm['name'] = self::algorithm_name($function);
-                $algorithm['url'] = self::website_url() . 'algorithm/' . $algorithm['slug'];
+                $algorithm['slug'] = self::algorithmSlug($function);
+                $algorithm['name'] = self::algorithmName($function);
+                $algorithm['url'] = self::websiteUrl() . 'algorithm/' . $algorithm['slug'];
                 $algorithm['algorithm'] = $function;
                 $algorithm['type'] = 'string';
                 $algorithms[] = $algorithm;
@@ -72,17 +72,17 @@ class eagle
     //hashing algorithms yet to implement
 
     //count available algorithms
-    public static function all_algorithms()
+    public static function allAlgorithms()
     {
         $hash = null;
-        $string = self::string_algorithms();
+        $string = self::stringAlgorithms();
         return ($hash && $string ? array_merge($hash, $string) : ($hash ? $hash : $string));
     }
 
     //convert algorithm names to appropriate slugs
-    public static function slug_to_algorithm($slug)
+    public static function slugToAlgorithm($slug)
     {
-        $algorithms = self::all_algorithms();
+        $algorithms = self::allAlgorithms();
         foreach ($algorithms as $algorithm) {
             if ($algorithm['slug'] == $slug) {
                 return $algorithm;
@@ -94,7 +94,7 @@ class eagle
 
 
     //the main magic happens here
-    public static function magic_method($algorithm, $opts)
+    public static function magicMethod($algorithm, $opts)
     {
         //validate if string is not null
         if (!isset($opts['string']) || empty($opts['string'])) {

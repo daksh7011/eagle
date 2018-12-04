@@ -12,11 +12,11 @@
 require_once('includes/config.php');
 
 // set the title, description & response.
-$algorithm = (isset($_GET['slug']) ? eagle::slug_to_algorithm($_GET['slug']) : false);
+$algorithm = (isset($_GET['slug']) ? Eagle::slugToAlgorithm($_GET['slug']) : false);
 if ($algorithm) {
     $website['title'] = ucwords($algorithm['name']);
     $website['description'] = 'Use the ' . $algorithm['name'] . ' ' . $algorithm['type'] . ' algorithm on your strings.';
-    $website['response'] = (isset($_POST['submit']) ? eagle::magic_method($algorithm, $_POST) : false);
+    $website['response'] = (isset($_POST['submit']) ? Eagle::magicMethod($algorithm, $_POST) : false);
 } else {
     header('location: ../');
     exit;
