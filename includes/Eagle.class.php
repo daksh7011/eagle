@@ -20,8 +20,9 @@ class Eagle
     //get website url from global var and concat it with protocol
     public static function websiteUrl()
     {
-        //$dir = dirname($_SERVER['PHP_SELF']);
-        $dir = dirname($_SERVER['REQUEST_URI']);
+        //$dir = dirname($_SERVER['PHP_SELF']); //doesnt work
+        //$dir = dirname($_SERVER['REQUEST_URI']); //doesnt work
+        $dir = dirname($_SERVER['SCRIPT_FILENAME']);
         return self::websiteProtocol() . '://' . $_SERVER['HTTP_HOST'] . $dir . '/';
     }
 
